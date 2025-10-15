@@ -1,4 +1,4 @@
-# LLM Code Deployment API
+# TaskPilot (LLM Code Deployment API)
 
 A FastAPI-based service that receives natural language app briefs, uses LLMs to generate web applications, deploys them to GitHub Pages, and reports back to evaluation endpoints.
 
@@ -98,6 +98,22 @@ curl -X POST http://127.0.0.1:8000/task \
     "checks": ["Page displays Hello World"],
     "evaluation_url": "https://httpbin.org/post"
   }'
+```
+
+
+```bash
+curl -X POST http://127.0.0.1:8000/task \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "student@example.com",
+    "secret": "secret123",
+    "task": "test-task",
+    "round": 2,
+    "nonce": "test-nonce",
+    "brief": "Change the color of the Hello World text to red",
+    "checks": ["Hello World text is displayed in red color"],
+    "evaluation_url": "https://httpbin.org/post"
+  }' | jq
 ```
 
 ## Security Notes
