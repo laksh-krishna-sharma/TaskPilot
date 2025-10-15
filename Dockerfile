@@ -40,6 +40,10 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | d
 # Create logs directory
 RUN mkdir -p logs
 
+# Configure Git
+RUN git config --global user.name "laksh-krishna-sharma"
+RUN git config --global user.email "23f3002362@ds.study.iitm.ac.in"
+
 # Expose port
 EXPOSE 8000
 

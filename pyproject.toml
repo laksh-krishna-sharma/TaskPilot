@@ -11,4 +11,6 @@ dependencies = [
     "python-dotenv>=1.0.0",
     "requests>=2.0.0",
     "huggingface-hub[cli]>=0.35.3",
+    "llm>=0.27.1",
+    "llm-gemini>=0.26.1",
 ]
