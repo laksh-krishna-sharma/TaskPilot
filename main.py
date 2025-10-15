@@ -9,6 +9,9 @@ import json
 import requests
 import time
 
+# Ensure logs directory exists
+os.makedirs('logs', exist_ok=True)
+
 # Configure logging
 logging.basicConfig(
     filename='logs/agent.log',
