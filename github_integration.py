@@ -84,8 +84,12 @@ def create_github_repo(task_id: str, files: Dict[str, str], brief: str, checks: 
             subprocess.run(['sh', '-c', f'echo \'{pages_data}\' | gh api -X POST /repos/{GITHUB_USER}/{repo_name}/pages --input -'], check=True)
         else:
             # Update existing repo
-            # Clone
-            subprocess.run(['git', 'clone', repo_url, repo_dir], check=True)
+            # Clone with authentication
+            auth_repo_url = f"https://{GITHUB_TOKEN}@github.com/{GITHUB_USER}/{repo_name}.git"
+            subprocess.run(['git', 'clone', auth_repo_url, repo_dir], check=True)
+            
+            # Ensure remote is set correctly
+            subprocess.run(['git', 'remote', 'set-url', 'origin', auth_repo_url], cwd=repo_dir, check=True)
             
             # Update files
             for filename, content in files.items():
